@@ -1,1 +1,57 @@
+<html>
+<head>
+<style>
+body
+{
+background-color:#42b3f4;
+}
+select
+{
+background-color:#42ebf4;
+}
+</style>
+<script>
+function showRSS(str) {
+  if (str.length==0) { 
+    document.getElementById("rssOutput").innerHTML="";
+    return;
+  }
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else {  // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("rssOutput").innerHTML=this.responseText;
+    }
+  }
+  xmlhttp.open("GET","http://www.webapsolution.com/worldcup2018/getrss.php?q="+str,true);
+  xmlhttp.send();
+}
+</script>
+</head>
+<body onload="myFunction()">
+<script>
+function myFunction() {
+   showRSS("RWC");
+}
+</script>
+<h2 color="red">Select News Type World Cup 2018</h2>
+<form>
+<select onchange="showRSS(this.value)">
+<option value="RWC" selected>FIFA World Cup Russia 2018</option>
+<option value="LN">Latest News</option>
+<option value="PH">Latest Photos</option>
+<option value="VD">Latest Video</option>
+<option value="MP">Most Popular</option>
+<option value="IV">Interviews</option>
+<option value="IND">India</option>
+</select>
+</form>
+<br>
+<div id="rssOutput">RSS-feed will be listed here...</div>
 
+</body>
+</html>
