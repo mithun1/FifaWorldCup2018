@@ -53,24 +53,6 @@ function showRSS(str) {
       // Request interstitial (will present automatically when autoShowInterstitial is set to true)
       //admob.requestInterstitialAd();
 	 admob.requestInterstitialAd({publisherId: "ca-app-pub-1458752546991864/6848511430", interstitialAdId: "ca-app-pub-1458752546991864/9793281117"});
-    
- feedparser.on('readable', function () {
-  // This is where the action is!
-  var stream = this; // `this` is `feedparser`, which is a stream
-  var meta = this.p;
-var t = this.link;  // **NOTE** the "meta" is always available in the context of the feedparser instance
-  var item;
-  while (item = stream.read()) {
-    //console.log(item);
-	/*console.log(item.title);
-	console.log(item.description);
-	console.log(item.url);*/
-	console.log(item.link);
-	  alert(item.link);
-  }
-  //console.log(item[0]);
-  //console.log(item.date);
-});
  
  }
     
