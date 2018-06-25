@@ -1,6 +1,6 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.webapsolution.helloworld" version="1.0.0">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.webapsolution.worldcup2018" version="1.0.0">
   <name>FifaWorldCup2018</name>
-  <description>Hello World sample application that responds to the deviceready event.</description>
+  <description>World Cup 2018 Latest News</description>
   <author href="http://www.webapsolution.com" email="info@webapsolution.com">Webapsolution.com</author>
   <content src="index.html"/>
   <preference name="permissions" value="none"/>
