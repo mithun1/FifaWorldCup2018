@@ -22,6 +22,58 @@ background-color: lightblue;
 </style>
 </head>
 <body>
+    <script>
+ function onDeviceReady() {
+      document.removeEventListener('deviceready', onDeviceReady, false);
+      
+      // Set AdMobAds options:
+      admob.setOptions({
+        publisherId:          "pub-1458752546991864",  // Required
+        interstitialAdId:     "ca-app-pub-1458752546991864/9793281117",  // Optional
+        tappxIdiOS:           "/XXXXXXXXX/Pub-XXXX-iOS-IIII",            // Optional
+        tappxIdAndroid:       "Pub-41220-Android-0261",        // Optional
+        tappxShare:           0.5                                        // Optional
+      });
+      
+      // Start showing banners (atomatic when autoShowBanner is set to true)
+     // admob.createBannerView();
+	 admob.createBannerView({publisherId: "ca-app-pub-1458752546991864", interstitialAdId: "ca-app-pub-1458752546991864/3727524075"});
+      
+      // Request interstitial (will present automatically when autoShowInterstitial is set to true)
+      //admob.requestInterstitialAd();
+	 admob.requestInterstitialAd({publisherId: "ca-app-pub-1458752546991864/6848511430", interstitialAdId: "ca-app-pub-1458752546991864/9793281117"});
+    
+ feedparser.on('readable', function () {
+  // This is where the action is!
+  var stream = this; // `this` is `feedparser`, which is a stream
+  var meta = this.p;
+var t = this.link;  // **NOTE** the "meta" is always available in the context of the feedparser instance
+  var item;
+  while (item = stream.read()) {
+    //console.log(item);
+	/*console.log(item.title);
+	console.log(item.description);
+	console.log(item.url);*/
+	console.log(item.link);
+	  alert(item.link);
+  }
+  //console.log(item[0]);
+  //console.log(item.date);
+});
+ 
+ }
+    
+    document.addEventListener("deviceready", onDeviceReady, false);
+	function myFunctionadd()
+	{
+	 admob.requestInterstitialAd({publisherId: "ca-app-pub-1458752546991864/6848511430", interstitialAdId: "ca-app-pub-1458752546991864/9793281117"});	
+	}
+	function badd()
+	{
+		admob.createBannerView({publisherId: "ca-app-pub-1458752546991864", interstitialAdId: "ca-app-pub-1458752546991864/3727524075"})
+	admob.showBanner(admob.BannerSize.BANNER,admob.Position.TOP_APP);//show banner at the top of app 
+	}
+</script>
 <h3>World Cup News From Fox Sports</h3>
 <iframe id="fc" src="http://www.webapsolution.com/worldcup2018/feed.php" width=device-width height="1800" frameborder="0" scrolling="yes"  onload="resizeIframe(this)">
 </iframe>
