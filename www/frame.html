@@ -1,0 +1,29 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+  function resizeIframe(obj) {
+    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+  }
+</script>
+<style>
+h3
+{
+color:blue;
+}
+#fc
+{
+background-color: lightblue;
+}
+body
+{
+background-color: lightblue;
+}
+</style>
+</head>
+<body>
+<h3>World Cup News From Fox Sports</h3>
+<iframe id="fc" src="http://www.webapsolution.com/worldcup2018/feed.php" width=device-width height="1800" frameborder="0" scrolling="yes"  onload="resizeIframe(this)">
+</iframe>
+</body>
+</html>
