@@ -10,7 +10,44 @@ select
 background-color:#42ebf4;
 }
 </style>
+</head>
+<body onload="myFunction()">
 <script>
+ function onDeviceReady() {
+      document.removeEventListener('deviceready', onDeviceReady, false);
+      
+      // Set AdMobAds options:
+      admob.setOptions({
+        publisherId:          "pub-1458752546991864",  // Required
+        interstitialAdId:     "ca-app-pub-1458752546991864/9793281117",  // Optional
+        tappxIdiOS:           "/XXXXXXXXX/Pub-XXXX-iOS-IIII",            // Optional
+        tappxIdAndroid:       "",        // Optional
+        tappxShare:           0.5                                        // Optional
+      });
+      
+      // Start showing banners (atomatic when autoShowBanner is set to true)
+     // admob.createBannerView();
+	 admob.createBannerView({publisherId: "ca-app-pub-1458752546991864", interstitialAdId: "ca-app-pub-1458752546991864/6989219451"});
+      
+      // Request interstitial (will present automatically when autoShowInterstitial is set to true)
+      //admob.requestInterstitialAd();
+	 admob.requestInterstitialAd({publisherId: "ca-app-pub-1458752546991864/6848511430", interstitialAdId: "ca-app-pub-1458752546991864/9793281117"});
+    
+}
+    
+   // document.addEventListener("deviceready", onDeviceReady, false);
+	function myFunctionadd()
+	{
+	 admob.requestInterstitialAd({publisherId: "Publisher ID: pub-1458752546991864", interstitialAdId: "ca-app-pub-1458752546991864/8034298696"});	
+	}
+	function badd()
+	{
+		admob.createBannerView({publisherId: "ca-app-pub-1458752546991864", interstitialAdId: "ca-app-pub-1458752546991864/3727524075"})
+	admob.showBanner(admob.BannerSize.BANNER,admob.Position.TOP_APP);//show banner at the top of app 
+	}
+	setInterval(myFunctionadd(), 30000);
+</script>
+	<script>
 function showRSS(str) {
   if (str.length==0) { 
     document.getElementById("rssOutput").innerHTML="";
@@ -31,43 +68,11 @@ function showRSS(str) {
   xmlhttp.send();
 }
 </script>
-</head>
-<body onload="myFunction()">
-  <script>
- function onDeviceReady() {
-      document.removeEventListener('deviceready', onDeviceReady, false);
-      
-      // Set AdMobAds options:
-      admob.setOptions({
-        publisherId:          "pub-1458752546991864",  // Required
-        interstitialAdId:     "ca-app-pub-1458752546991864/9793281117",  // Optional
-        tappxIdiOS:           "/XXXXXXXXX/Pub-XXXX-iOS-IIII",            // Optional
-        tappxIdAndroid:       "Pub-41220-Android-0261",        // Optional
-        tappxShare:           0.5                                        // Optional
-      });
-      
-      // Start showing banners (atomatic when autoShowBanner is set to true)
-     // admob.createBannerView();
-	 admob.createBannerView({publisherId: "ca-app-pub-1458752546991864", interstitialAdId: "ca-app-pub-1458752546991864/3727524075"});
-      
-      // Request interstitial (will present automatically when autoShowInterstitial is set to true)
-      //admob.requestInterstitialAd();
-	 admob.requestInterstitialAd({publisherId: "ca-app-pub-1458752546991864/6848511430", interstitialAdId: "ca-app-pub-1458752546991864/9793281117"});
- 
- }
-    
-    document.addEventListener("deviceready", onDeviceReady, false);
-	function myFunctionadd()
-	{
-	 admob.requestInterstitialAd({publisherId: "ca-app-pub-1458752546991864/6848511430", interstitialAdId: "ca-app-pub-1458752546991864/9793281117"});	
-	}
-	function badd()
-	{
-		admob.createBannerView({publisherId: "ca-app-pub-1458752546991864", interstitialAdId: "ca-app-pub-1458752546991864/3727524075"})
-	admob.showBanner(admob.BannerSize.BANNER,admob.Position.TOP_APP);//show banner at the top of app 
-	}
-	  setInterval(myFunctionadd(), 30000);
-</script>
+
+	<div class="header"></div>
+	<h1>Test admob plugin</h1>
+	<button onclick="setTimeout(myFunctionadd, 300)">click add</button>
+	<button onclick="setTimeout(badd, 300)">click bannerad</button>
 <script>
 function myFunction() {
    showRSS("RWC");
