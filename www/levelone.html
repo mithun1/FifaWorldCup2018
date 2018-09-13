@@ -1,0 +1,364 @@
+<html>
+<head>
+<title>cat anim</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+body
+{
+background-color: #A7DDC1;
+}
+@font-face {
+  font-family: 'FFF_Tusj';
+  src: url('FFF_Tusj.ttf'); /* IE9 Compat Modes */
+  src: url('FFF_Tusj.ttf') format('embedded-opentype'), /* IE6-IE8 */
+       url('FFF_Tusj.ttf') format('ttf'), /* Modern Browsers */
+       url('FFF_Tusj.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
+#cat
+{
+height: 60px;
+width: 80px;
+}
+#div1
+{
+height: 30px;
+width: 30px;
+background-color: red;
+}
+#ar
+{
+background-color: green;
+height: 800px;
+width: 600px;
+}
+#d1
+{
+position: absolute;
+height: 40px;
+width: 40px;
+display: block;
+color: red;
+margin-left: 180px;
+margin-top: 140px;
+}
+#d2
+{
+position: absolute;
+height: 40px;
+width: 40px;
+display: block;
+color: red;
+margin-left: 280px;
+margin-top: 240px;
+}
+#count
+{
+position: absolute;
+font-family: Impact, Charcoal, sans-serif;
+color: green;
+font-size: 25;
+background-color: yellow;
+width: 250px;
+}
+#dblank
+{
+position: absolute;
+height: 100%;
+width: 100%;
+font-family: FFF_Tusj;
+background-color: yellow;
+display: none;
+color: green;
+font-size: 40px;
+z-index: 1;
+}
+#linknext
+{
+margin-left: 40%;
+color: green;
+font-family: FFF_Tusj;
+font-size: 40px;
+}
+#splay
+{
+position: absolute;
+color: green;
+font-size: 35px;
+margin-left: 70%;
+}
+#pus
+{
+position: absolute;
+color: green;
+font-size: 35px;
+margin-left: 75%;
+}
+
+</style>
+<script>
+var xco;
+var yco;
+var xaix;
+var yaix;
+var catx;
+var caty;
+var topval;
+var leftval;
+var resetval = 0;
+var aposition = 30;
+var count = [];
+count[1] = 0;
+var mT;
+var mL;
+var widthdev = [];
+widthdev[1] = 200;
+var heightdev = [];
+heightdev[1] = 200;
+var audio;
+var eldiv;
+function showCoords(event) {
+    xco = event.clientX;
+    yco = event.clientY;
+	aposition = 30;
+    var str = "offsetx=" + xco + "&offsety=" + yco;
+
+  resetval = 1;
+  setTimeout("ani()", 1000);
+}
+
+function setdiv()
+{
+eldiv = document.getElementById("animarea");
+ widthdev[1] = screen.width - 60;
+  heightdev[1] = screen.height - 80;
+  eldiv.height = heightdev[1];
+  eldiv.width = widthdev[1];
+}
+
+function soundplay()
+{
+audio = new Audio('sound.mp3');
+audio.play();
+audio.loop = true;
+}
+function pauseAudio() { 
+    audio.pause(); 
+}
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+var x;
+
+function elcreat()
+{
+document.getElementById("count").innerHTML = "TOTAL ATE UP :" + " - " + count[1];
+mT = getRandomInt(20, (heightdev[1] - 80)); 
+mL = getRandomInt(20, (widthdev[1] - 40));
+ x = document.createElement("IMG");
+    x.setAttribute("src", "anigifup1.png");
+	x.setAttribute("id", "d1");
+    x.setAttribute("width", "60");
+    x.setAttribute("height", "60");
+    x.setAttribute("alt", "The Pulpit Rock");
+	x.style.marginTop = mT;
+	x.style.marginLeft = mL;
+    eldiv.appendChild(x);
+}
+
+
+
+function delele()
+{
+x.parentNode.removeChild(x);
+}
+
+
+//var topval = 20;
+//var leftval = 40;
+function elementcontrol(tx, ty)
+{
+//alert(ide);
+//var num = getRandomInt(600, 1200);
+//alert(num);
+//var ide = getRandomInt(1, 4);
+if(topval > (tx - 40) && topval < (tx + 40) && leftval > (ty - 40) && leftval < (ty + 20))
+{
+document.getElementById("d1").style.display = "none";
+count[1] = count[1] + 1;
+if(count[1] > 25)
+{
+document.getElementById("dblank").style.display = "block";
+}
+//document.getElementById("count").innerHTML = "Paragraph changed!";
+delele();
+elcreat();
+}
+
+}
+/*else
+{
+setTimeout(function(){ document.getElementById("d1").style.display = "none"; }, 660);
+}*/
+
+
+
+
+</script>
+</head>
+<body onclick="showCoords(event)">
+<p id="splay" onclick="soundplay()">&#x25BA;</p><p id="pus" onclick="pauseAudio()">&#x25A3;</p>
+<p id="count"></p>
+<div id="dblank"><h1 align="center">YOU WIN</h1><br><a id="linknext" href="level2.html">Next Level</a></div>
+<div id="animarea">
+<img id="cat" src="dyn.png" style="position:absolute">
+</div>
+<script>
+setdiv();
+setInterval(delele, 26000);
+elcreat();
+setInterval(elcreat, 26000);
+//var cat = document.querySelector("img");
+var cat = document.getElementById("cat");
+var anidiv = document.getElementById("anidiv");
+var ang = 0;
+function ani()
+{
+if(resetval == 1)
+{
+catx = cat.x;
+caty = cat.y;
+topval = caty;
+leftval = catx;
+
+xaix = (xco - catx);
+yaix = (yco - caty);
+resetval = 0;
+}
+//alert(" from ani x-co :" + xco + "y- co:" + yco);
+//alert(" from ani x-cordenate :" + xaix + "y- coordinet :" + yaix);
+xcoin = xco;
+ycoin = yco;
+ang = ang + 0.1;
+//alert("x-cordenate :" + catx + "y- coordinet :" + caty);
+//alert(xcoin + "value" + ycoin);
+
+
+if(xaix < 0 && yaix < 0)
+{
+xaixplus = xaix * -1;
+yaixplus = yaix * -1;
+//alert(xaixplus + "value" + xaixplus);
+//alert("error in code");
+
+if(xaixplus > yaixplus)
+{
+var incxm = xaixplus / xaixplus;
+var incym = (yaixplus / xaixplus); //* (xaix / 10);
+}
+else if(yaixplus > xaixplus)
+{
+var incym = yaixplus / yaixplus;
+var incxm = (xaixplus / yaixplus);
+}
+else
+{
+var incym = yaixplus / yaixplus;
+var incxm = (xaixplus / yaixplus);
+}
+/*if((xaix < 0 && catx + 10 < xco < catx - 10) || (yaix < 0 && caty + 10 < yco < caty - 10) )
+{
+incxm = incxm * 2;
+incym = incym * 2;
+}
+else
+{*/
+incxm = incxm * 15;
+incym = incym * 15;
+
+topval = topval - incym;
+leftval = leftval - incxm;
+}
+else
+{
+if(xaix > yaix)
+{
+var incx = xaix / xaix;
+var incy = (yaix / xaix); //* (xaix / 10);
+}
+else if(yaix > xaix)
+{
+var incy = yaix / yaix;
+var incx = (xaix / yaix);
+}
+else
+{
+var incy = yaix / yaix;
+var incx = (xaix / yaix);
+}
+if((xaix < 0 && catx + 10 < xco < catx - 10) || (yaix < 0 && caty + 10 < yco < caty - 10) )
+{
+incx = incx * 2;
+incy = incy * 2;
+}
+else
+{
+incx = incx * 15;
+incy = incy * 15;
+}
+
+topval = topval + incy;
+leftval = leftval + incx;
+}
+//controls point of the animation of the element
+if(aposition < 1)
+{
+aposition = 30;
+}
+else
+{
+ aposition = Math.sqrt( Math.pow((xco - leftval),2) + Math.pow((yco - topval),2) );
+ }
+//alert(aposition);
+//alert(" from ani top :" + topval + "left :" + leftval);
+if(aposition < 20)
+{
+//alert("at the right position");
+}
+else
+{
+cat.style.marginTop = topval;   //(Math.sin(ang) * 20) + "px";
+cat.style.marginLeft = leftval;  //(Math.cos(ang) * 200) + "px";
+setTimeout("ani()", 1000);
+if(topval > heightdev[1])
+{
+topval = heightdev[1];
+}
+if(topval < 0)
+{
+topval = 20;
+}
+if(leftval > widthdev[1])
+{
+leftval = widthdev[1];
+}
+if(leftval < 0)
+{
+leftval = 20;
+}
+//alert("value" + topval + ";" + leftval);
+elementcontrol(mT, mL);
+}
+}
+//setTimeout("ani()", 1000);
+
+</script>
+</body>
+</html>
