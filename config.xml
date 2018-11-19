@@ -1,6 +1,6 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.webapsolution.monstergame" version="1.0.1">
-  <name>Dinosaur Game</name>
-  <description>Feed you Dinosaur - The DinosaurGame.</description>
+  <name>Monster Game</name>
+  <description>Feed your Monster - The MonsterGame.</description>
   <author href="http://www.webapsolution.com" email="info@webapsolution.com">www.webapsolution.com</author>
   <content src="index.html"/>
   <preference name="orientation" value="portrait" />
